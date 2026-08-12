@@ -1,0 +1,20 @@
+// Phải khớp với backend/config/permissions.js
+export const PERMISSIONS = {
+  DASHBOARD_VIEW: 'dashboard.view',
+  USER_VIEW: 'user.view',
+  USER_MANAGE: 'user.manage',
+  ROLE_MANAGE: 'role.manage',
+  NEWS_VIEW: 'news.view',
+  NEWS_MANAGE: 'news.manage',
+  DOCUMENT_VIEW: 'document.view',
+  DOCUMENT_MANAGE: 'document.manage',
+  ORGANIZATION_VIEW: 'organization.view',
+  ORGANIZATION_MANAGE: 'organization.manage',
+  BANNER_MANAGE: 'banner.manage',
+  MEDIA_MANAGE: 'media.manage',
+  FAQ_MANAGE: 'faq.manage',
+  FEEDBACK_VIEW: 'feedback.view',
+  FEEDBACK_MANAGE: 'feedback.manage',
+  AUDITLOG_VIEW: 'auditlog.view',
+  SETTINGS_MANAGE: 'settings.manage',
+};

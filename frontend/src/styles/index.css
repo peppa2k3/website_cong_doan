@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-800;
+  }
+  :focus-visible {
+    outline: 2px solid #B4232C;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-union-500;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-union-500 text-white hover:bg-union-600 shadow-sm;
+  }
+  .btn-secondary {
+    @apply btn bg-ink-700 text-white hover:bg-ink-800;
+  }
+  .btn-outline {
+    @apply btn border border-line bg-white text-ink-700 hover:border-union-300 hover:text-union-600;
+  }
+  .btn-ghost {
+    @apply btn text-ink-600 hover:bg-ink-50;
+  }
+  .btn-danger {
+    @apply btn bg-union-600 text-white hover:bg-union-700;
+  }
+
+  .card {
+    @apply rounded-lg border border-line bg-white shadow-card;
+  }
+
+  .input {
+    @apply w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink-800 placeholder:text-ink-300 focus:border-union-400 focus:outline-none focus:ring-2 focus:ring-union-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
+  }
+  .select {
+    @apply input appearance-none pr-8;
+  }
+  .textarea {
+    @apply input min-h-[120px] resize-y;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+}
+
+/* Ghi đè giao diện mặc định của react-quill để hợp với hệ thống thiết kế */
+.ql-toolbar.ql-snow {
+  @apply rounded-t-md border-line bg-ink-50;
+}
+.ql-container.ql-snow {
+  @apply rounded-b-md border-line font-body text-[15px];
+  min-height: 220px;
+}
+
+.prose-doc :where(h2, h3) {
+  @apply font-display font-bold text-ink-800 mt-6 mb-3;
+}
+.prose-doc p {
+  @apply mb-4 leading-relaxed text-ink-700;
+}
+.prose-doc a {
+  @apply text-union-600 underline;
+}
+.prose-doc ul, .prose-doc ol {
+  @apply mb-4 ml-5 list-disc space-y-1;
+}
+.prose-doc img {
+  @apply my-4 rounded-md;
+}
