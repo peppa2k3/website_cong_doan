@@ -18,7 +18,9 @@ export default function AboutPage() {
           <img src="/hhcd.svg" alt="My SVG Logo" width="225" height="150"></img>
           <div>
             <span className="eyebrow !text-brass-800">Giới thiệu</span>
-            <h1 className="mt-2 font-display text-3xl font-extrabold text-black">Công đoàn cơ sở</h1>
+<h1 className="title-medium">
+  Công đoàn cơ sở
+</h1>
             <p className="mt-3 max-w-2xl text-ink-700">
               Tổ chức đại diện cho đoàn viên và người lao động, hoạt động vì mục tiêu chăm lo, bảo vệ quyền và lợi ích hợp pháp, chính đáng, xây dựng mối quan hệ lao động hài hoà, ổn định và tiến bộ.
             </p>
