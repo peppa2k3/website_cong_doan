@@ -30,7 +30,7 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Copy application
 COPY . .
-
+RUN mkdir -p uploads/images uploads/documents uploads/media
 # Copy entrypoint
 COPY entrypoint.sh /app/entrypoint.sh
 
@@ -44,3 +44,4 @@ USER appuser
 EXPOSE 5000
 
 ENTRYPOINT ["/app/entrypoint.sh"]
+
