@@ -31,7 +31,7 @@ jobs:
             echo "target_env=production" >> "$GITHUB_OUTPUT"
             echo "tag_prefix=" >> "$GITHUB_OUTPUT"
           else
-            echo "target_env=development" >> "$GITHUB_OUTPUT"
+            echo "target_env=productiontest" >> "$GITHUB_OUTPUT"
             echo "tag_prefix=dev-" >> "$GITHUB_OUTPUT"
           fi
 
