@@ -47,7 +47,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/api/health', (req, res) => res.json({ success: true, message: 'API đang hoạt động.' }));
 
-app.use('/api', routes);
+app.use('/api/v1', routes);
 
 app.use(notFound);
 app.use(errorHandler);
