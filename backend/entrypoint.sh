@@ -12,4 +12,4 @@ echo " Seed completed successfully"
 echo " Starting server..."
 echo "======================================"
 
-exec node src/server.js
+exec node server.js
