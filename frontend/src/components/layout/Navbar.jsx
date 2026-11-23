@@ -33,7 +33,7 @@ export default function Navbar() {
         <div className="container-page flex h-9 items-center justify-between text-xs px-4">
           <div className="flex items-center gap-1.5">
             <Phone className="h-3.5 w-3.5" />
-            <span>Đường dây nóng Công đoàn: 0902 993 488</span>
+            <span>Đường dây nóng Công đoàn: 0908 816 546</span>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/tra-cuu" className="hover:text-white">Tra cứu trạng thái xử lý</Link>
