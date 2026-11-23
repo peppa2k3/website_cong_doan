@@ -87,7 +87,7 @@ export default function MediaAdminPage() {
           onChange={(e) => { setPage(1); setAlbum(e.target.value); }}
         />
         {canManage && (
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button onClick={() => openCreate('image')} className="btn-outline"><ImageIcon className="h-4 w-4" /> Thêm ảnh</button>
             <button onClick={() => openCreate('video')} className="btn-primary"><Video className="h-4 w-4" /> Thêm video</button>
           </div>
@@ -97,7 +97,7 @@ export default function MediaAdminPage() {
       {loading ? <LoadingSpinner /> : rows.length === 0 ? <EmptyState title="Thư viện trống" icon={ImageIcon} /> : (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {rows.map((m) => (
-            <div key={m._id} className="group relative overflow-hidden rounded-lg border border-line bg-white">
+            <div key={m._id} className="relative min-w-0 overflow-hidden rounded-lg border border-line bg-white">
               <div className="relative aspect-video bg-ink-100">
                 <img src={m.type === 'video' ? (m.thumbnailUrl || '/vite.svg') : m.url} alt={m.title} className="h-full w-full object-cover" />
                 {m.type === 'video' && (
@@ -112,8 +112,10 @@ export default function MediaAdminPage() {
               </div>
               {canManage && (
                 <button
+                  type="button"
                   onClick={() => setDeleteTarget(m)}
-                  className="absolute right-1.5 top-1.5 rounded-full bg-white/90 p-1.5 opacity-0 shadow-card transition-opacity group-hover:opacity-100"
+                  aria-label="Xoá khỏi thư viện"
+                  className="absolute right-1.5 top-1.5 grid h-11 w-11 place-items-center rounded-full bg-white/90 shadow-card hover:bg-white"
                 >
                   <Trash2 className="h-3.5 w-3.5 text-union-600" />
                 </button>

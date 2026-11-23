@@ -126,7 +126,7 @@ export default function OrganizationAdminPage() {
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editingId ? 'Chỉnh sửa nhân sự' : 'Thêm nhân sự'}>
         <form onSubmit={submit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Họ và tên</label>
               <input className="input" required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} />
@@ -136,7 +136,7 @@ export default function OrganizationAdminPage() {
               <input className="input" required value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })} />
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Đơn vị</label>
               <select className="select" value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })}>
@@ -151,7 +151,7 @@ export default function OrganizationAdminPage() {
               </select>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Email</label>
               <input type="email" className="input" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
@@ -169,7 +169,7 @@ export default function OrganizationAdminPage() {
             <label className="label">Thứ tự hiển thị</label>
             <input type="number" className="input" value={form.order} onChange={(e) => setForm({ ...form, order: e.target.value })} />
           </div>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setModalOpen(false)}>Huỷ</button>
             <button disabled={saving} className="btn-primary">{saving ? 'Đang lưu...' : 'Lưu'}</button>
           </div>

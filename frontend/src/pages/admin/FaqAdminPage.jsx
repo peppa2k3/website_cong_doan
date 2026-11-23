@@ -78,9 +78,9 @@ export default function FaqAdminPage() {
         <div className="space-y-3">
           {rows.map((f) => (
             <div key={f._id} className="card p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 flex-1 [overflow-wrap:anywhere]">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className={`badge ${f.status === 'da_tra_loi' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                       {f.status === 'da_tra_loi' ? 'Đã trả lời' : 'Chờ trả lời'}
                     </span>
@@ -96,7 +96,7 @@ export default function FaqAdminPage() {
                   {f.answer && <p className="mt-2 rounded-md bg-ink-50 p-3 text-sm text-ink-600">{f.answer}</p>}
                 </div>
                 {canManage && (
-                  <div className="flex shrink-0 gap-1.5">
+                  <div className="flex shrink-0 flex-wrap justify-end gap-1.5">
                     <button onClick={() => openAnswer(f)} className="btn-outline !py-1.5 text-xs"><CheckCircle2 className="h-3.5 w-3.5" /> {f.answer ? 'Sửa trả lời' : 'Trả lời'}</button>
                     <button onClick={() => setDeleteTarget(f)} className="btn-ghost !p-2 text-union-600"><Trash2 className="h-4 w-4" /></button>
                   </div>

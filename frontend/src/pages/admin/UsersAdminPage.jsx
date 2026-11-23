@@ -136,7 +136,7 @@ export default function UsersAdminPage() {
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editingId ? 'Chỉnh sửa tài khoản' : 'Thêm tài khoản mới'}>
         <form onSubmit={submit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Họ và tên</label>
               <input className="input" required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} />
@@ -148,7 +148,7 @@ export default function UsersAdminPage() {
               </select>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Tên đăng nhập</label>
               <input className="input" required disabled={!!editingId} value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
@@ -164,7 +164,7 @@ export default function UsersAdminPage() {
               <input type="password" className="input" required minLength={8} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
             </div>
           )}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-3">
             <div>
               <label className="label">Điện thoại</label>
               <input className="input" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
@@ -178,7 +178,7 @@ export default function UsersAdminPage() {
               <input className="input" value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })} />
             </div>
           </div>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setModalOpen(false)}>Huỷ</button>
             <button disabled={saving} className="btn-primary">{saving ? 'Đang lưu...' : 'Lưu tài khoản'}</button>
           </div>
@@ -191,7 +191,7 @@ export default function UsersAdminPage() {
             <label className="label">Mật khẩu mới</label>
             <input type="password" className="input" required minLength={8} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
           </div>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setResetTarget(null)}>Huỷ</button>
             <button className="btn-primary">Đặt lại</button>
           </div>

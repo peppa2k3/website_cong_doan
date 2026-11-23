@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body:has(#admin-mobile-nav[open]) {
+  overflow: hidden;
+}
+
 @layer base {
   h1, h2, h3, h4 {
     @apply font-display text-ink-800;

@@ -117,7 +117,7 @@ export default function BannerAdminPage() {
             <label className="label">Đường dẫn liên kết (khi bấm vào banner)</label>
             <input className="input" value={form.linkUrl} onChange={(e) => setForm({ ...form, linkUrl: e.target.value })} placeholder="/tin-tuc/... hoặc để trống" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Vị trí hiển thị</label>
               <select className="select" value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })}>
@@ -133,7 +133,7 @@ export default function BannerAdminPage() {
             <input type="checkbox" checked={form.isActive} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} />
             Đang hiển thị công khai
           </label>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setModalOpen(false)}>Huỷ</button>
             <button disabled={saving} className="btn-primary">{saving ? 'Đang lưu...' : 'Lưu banner'}</button>
           </div>

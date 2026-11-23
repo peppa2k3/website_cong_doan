@@ -163,7 +163,7 @@ export default function NewsAdminPage() {
             <label className="label">Tiêu đề</label>
             <input className="input" required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Chuyên mục</label>
               <select className="select" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
@@ -202,7 +202,7 @@ export default function NewsAdminPage() {
               Tin nổi bật
             </label>
           </div>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setModalOpen(false)}>Huỷ</button>
             <button disabled={saving} className="btn-primary">{saving ? 'Đang lưu...' : 'Lưu tin'}</button>
           </div>

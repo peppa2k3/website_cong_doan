@@ -83,14 +83,14 @@ export default function FeedbackAdminPage() {
       {loading ? <LoadingSpinner /> : rows.length === 0 ? <EmptyState title="Chưa có góp ý/phản ánh/tố cáo nào" icon={ShieldAlert} /> : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {rows.map((f) => (
-            <button key={f._id} onClick={() => openDetail(f)} className="card p-4 text-left transition-shadow hover:shadow-lift">
-              <div className="flex items-center justify-between">
+            <button key={f._id} onClick={() => openDetail(f)} className="card min-w-0 p-4 text-left transition-shadow hover:shadow-lift">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className={`badge ${FEEDBACK_TYPES[f.type].color}`}>{FEEDBACK_TYPES[f.type].label}</span>
                 <span className={`badge ${FEEDBACK_STATUS[f.status].color}`}>{FEEDBACK_STATUS[f.status].label}</span>
               </div>
-              <p className="mt-2.5 line-clamp-2 font-medium text-ink-800">{f.title}</p>
-              <div className="mt-2.5 flex items-center justify-between text-xs text-ink-400">
-                <span className="font-mono">{f.trackingCode}</span>
+              <p className="mt-2.5 line-clamp-2 break-words font-medium text-ink-800">{f.title}</p>
+              <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-400">
+                <span className="break-all font-mono">{f.trackingCode}</span>
                 <span>{formatDateTime(f.createdAt)}</span>
               </div>
               {f.isAnonymous && <p className="mt-1.5 text-[11px] font-medium text-union-500">Gửi ẩn danh</p>}

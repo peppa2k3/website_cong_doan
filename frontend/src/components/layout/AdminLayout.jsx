@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Outlet, useLocation, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
@@ -21,38 +20,52 @@ const TITLES = {
 export default function AdminLayout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const drawerRef = useRef(null);
 
-  const matched = Object.keys(TITLES).find((path) => location.pathname === path || (path !== '/admin' && location.pathname.startsWith(path)));
-  const title = TITLES[matched] || 'Trang quản trị';
+  const title = TITLES[location.pathname.replace(/\/+$/, '')] || 'Trang quản trị';
+
+  const closeDrawer = () => drawerRef.current?.close();
+
+  const openDrawer = () => {
+    drawerRef.current.showModal();
+    setMobileOpen(true);
+  };
+
+  useEffect(() => {
+    drawerRef.current?.close();
+  }, [location.key]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = (event) => {
+      if (event.matches) drawerRef.current?.close();
+    };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
 
   return (
     <div className="flex min-h-screen bg-ink-50">
-      <Sidebar />
+      <div className="sticky top-0 hidden h-dvh w-64 shrink-0 self-start lg:block">
+        <Sidebar />
+      </div>
 
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 flex lg:hidden">
-          <div className="w-64 bg-ink-800">
-            <div className="flex justify-end p-3">
-              <button onClick={() => setMobileOpen(false)} className="rounded-md p-2 text-ink-300 hover:bg-ink-700">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="px-3">
-              <NavLink to="/admin" onClick={() => setMobileOpen(false)} className="block rounded-md px-3 py-2.5 text-sm font-medium text-ink-200 hover:bg-ink-700">Tổng quan</NavLink>
-            </div>
-          </div>
-          <div className="flex-1 bg-ink-900/50" onClick={() => setMobileOpen(false)} />
-        </div>
-      )}
+      <dialog
+        ref={drawerRef}
+        id="admin-mobile-nav"
+        aria-label="Menu quản trị"
+        onClose={() => setMobileOpen(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeDrawer();
+        }}
+        className="fixed inset-y-0 left-0 right-auto m-0 h-dvh max-h-none w-[min(18rem,calc(100vw-3rem))] max-w-none overflow-hidden bg-ink-800 p-0 backdrop:bg-ink-900/60"
+      >
+        <Sidebar onClose={closeDrawer} />
+      </dialog>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center border-b border-line bg-white px-4 py-2 lg:hidden">
-          <button onClick={() => setMobileOpen(true)} className="rounded-md p-2 text-ink-600 hover:bg-ink-50">
-            <Menu className="h-5 w-5" />
-          </button>
-        </div>
-        <Topbar title={title} />
-        <main className="flex-1 overflow-x-hidden p-4 sm:p-6">
+        <Topbar key={location.pathname} title={title} mobileOpen={mobileOpen} onOpenMenu={openDrawer} />
+        <main className="mx-auto w-full max-w-[100rem] flex-1 p-3 sm:p-6">
           <Outlet />
         </main>
       </div>

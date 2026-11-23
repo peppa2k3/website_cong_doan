@@ -161,7 +161,7 @@ export default function DocumentsAdminPage() {
             <label className="label">Tiêu đề văn bản</label>
             <input className="input" required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Số hiệu văn bản</label>
               <input className="input" value={form.docNumber} onChange={(e) => setForm({ ...form, docNumber: e.target.value })} placeholder="VD: 12/QĐ-CĐ" />
@@ -173,7 +173,7 @@ export default function DocumentsAdminPage() {
               </select>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Cơ quan ban hành</label>
               <input className="input" value={form.issuer} onChange={(e) => setForm({ ...form, issuer: e.target.value })} />
@@ -198,7 +198,7 @@ export default function DocumentsAdminPage() {
               <option value="published">Công khai</option>
             </select>
           </div>
-          <div className="flex justify-end gap-2 border-t border-line pt-4">
+          <div className="flex flex-wrap justify-end gap-2 border-t border-line pt-4">
             <button type="button" className="btn-outline" onClick={() => setModalOpen(false)}>Huỷ</button>
             <button disabled={saving} className="btn-primary">{saving ? 'Đang lưu...' : 'Lưu văn bản'}</button>
           </div>
